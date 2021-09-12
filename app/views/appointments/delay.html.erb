@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col">
+        <h5 class="fw-bold">
+            تاجيل المعاد.
+        </h5>
+
+        <div class="bg-light br-10 p-3">
+            <p class="fw-bold">
+                تاجيل معاد
+                <u class="text-primary"> <%= @appointment.name %> </u>
+                بتاريخ
+                <%= @appointment.app_date.strftime('%d/%m/%Y') %>
+                بخصوص
+                
+            </p>
+            <div class="bg-white p-3 br-10 mb-2">
+                <p class="fw-bold fs-5 text-muted"> <%= @appointment.description %> </p>
+            </div>
+
+             <%= form_with model: @appointment, url: appointment_delay_save_path, method: :put, local: true do |f| %>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <%= f.label :delay_date, 'تاريخ التاجيل', class: 'fw-bold mb-1' %> <span class="text-danger">*</span> <br>
+                            <%= f.date_field :delay_date, class: "form-control mb-2 #{ 'is-invalid' if @appointment.errors[:delay_date].any? }" %>
+                            <% @appointment.errors[:delay_date].each do |error| %>
+                                <Strong class="text-danger"> <%= error %> </Strong>
+                            <% end %>
+                        </div>
+                </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <%= f.label :app_time, 'الوقت', class: 'fw-bold mb-1' %> <span class="text-danger">*</span>  <br>
+                            <%= f.time_field :app_time, class: "form-control mb-2  #{ 'is-invalid' if @appointment.errors[:app_time].any? }" %>
+
+                            <% @appointment.errors[:app_time].each do |error| %>
+                                <Strong class="text-danger"> <%= error %> </Strong>
+                            <% end %>
+                        </div>
+                    </div>
+
+                </div>
+
+                <%= button_tag class: 'btn btn-prime' do %>
+                    حفظ
+                <% end %>
+
+
+            <% end %>
+        </div>
+
+       
+    </div>
+</div>

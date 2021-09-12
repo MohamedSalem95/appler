@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-md-6">
+        <h5 class="fw-bold"> اضافه معاد جديد. </h5>
+        <div class="bg-light p-3 br-10">
+            <%= form_with model: @appointment, local: true do |f| %>
+                <div class="form-group">
+                    <%= f.label :name, 'الاسم', class: 'fw-bold mb-1' %> <span class="text-danger">*</span>
+                    <%= f.text_field :name, class: "form-control mb-2 #{ 'is-invalid' if @appointment.errors[:name].any? }", placeholder: 'اسم صاحب المعاد...' %>
+                    <% @appointment.errors[:name].each do |error| %>
+                        <Strong class="text-danger"> <%= error %> </Strong>
+                    <% end %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.label :from, 'الجهه', class: 'fw-bold mb-1' %> <span class="text-danger">*</span>
+                    <%= f.select :from, @from_list, { include_blank: '__اختر الجهه__' }, { class: "form-select mb-2 #{ 'is-invalid' if @appointment.errors[:from].any? }" } %>
+                    <% @appointment.errors[:from].each do |error| %>
+                        <Strong class="text-danger"> <%= error %> </Strong>
+                    <% end %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.label :department, 'الاداره', class: 'fw-bold mb-1' %>
+                    <%= f.text_field :department, class: 'form-control mb-2', placeholder: 'الاداره....' %>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <%= f.label :app_date, 'التاريخ', class: 'fw-bold mb-1' %> <span class="text-danger">*</span>
+                            <%= f.date_field :app_date, class: "form-control mb-2 #{ 'is-invalid' if @appointment.errors[:app_date].any? }" %>
+                            <% @appointment.errors[:app_date].each do |error| %>
+                                <Strong class="text-danger"> <%= error %> </Strong>
+                            <% end %>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                    
+                    <div class="form-group">
+                        <%= f.label :app_time, 'الوقت', class: 'fw-bold mb-1' %> <span class="text-danger">*</span>
+                        <%= f.time_field :app_time, class: "form-control mb-2  #{ 'is-invalid' if @appointment.errors[:app_time].any? }" %>
+
+                        <% @appointment.errors[:app_time].each do |error| %>
+                            <Strong class="text-danger"> <%= error %> </Strong>
+                        <% end %>
+                    </div></div>
+                </div>
+
+                <div class="form-group">
+                    <%= f.label :description, 'تفاصيل المعاد', class: 'fw-bold mb-1' %>
+                    <%= f.text_area :description, rows: 4, class: 'form-control mb-2', placeholder: 'تفاصيل المقابله ....' %>
+                </div>
+                
+                <%= button_tag class: 'btn btn-prime' do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                    </svg>
+                    اضافه
+                <% end %>
+
+            <% end %>
+        </div>
+    </div>
+    <div class="col text-end">
+        <%= image_pack_tag 'add.png', width: 500 %>
+    </div>
+</div>

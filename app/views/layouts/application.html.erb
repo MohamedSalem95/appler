@@ -1,16 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html dir="rtl">
   <head>
-    <title>Appler</title>
+    <title>AppointmentManager</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'hello_vue' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: 'layouts/header' %>
+
+    <div class="px-3 pb-5" id="app">
+      <% if flash[:success] %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <b> <%= flash[:success] %> </b>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+    <%= render partial: 'layouts/footer' %>
   </body>
 </html>

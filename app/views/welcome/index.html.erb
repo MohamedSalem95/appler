@@ -1,2 +1,20 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h5 class="fw-bold"> 
+مرحبا في نظام اداره المواعيد
+ 🦄 
+</h5>
+
+<%= link_to appointment_manager_path do %>
+  <div class="bg-light br-10 p-1 d-inline-block point">
+    <%= image_pack_tag 'manager.png', width: 200 %>
+    <p class="text-center fw-bold"> المدير </p>
+  </div>
+<% end %>
+
+  &nbsp;
+
+<%= link_to appointments_path do %>
+  <div class="bg-light br-10 p-1 d-inline-block point">
+    <%= image_pack_tag 'sec.png', width: 200 %>
+    <p class="text-center fw-bold"> السكرتاريه </p>
+  </div>
+<% end %>

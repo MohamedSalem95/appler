@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="col-md-8">
+    <!--
+        <%# link_to new_appointment_path, class: 'btn btn-prime btn-lg' do %>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-plus-fill" viewBox="0 0 16 16">
+                <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zM8.5 8.5V10H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V11H6a.5.5 0 0 1 0-1h1.5V8.5a.5.5 0 0 1 1 0z"/>
+            </svg>
+            اضافه معاد
+        <%# end %> -->
+        <p class="fw-bold fs-5">
+            جميع المواعيد اليوم.
+        </p>
+
+        <% if @appointments.any? %>
+
+            <table class="table table-borderless table-bordered table-hover table-sm">
+                <thead class="bg-prime text-white">
+                    <th></th>
+                    <th> الاسم </th>
+                    <th> الوقت </th>
+                    <th> سبب المقابله </th>
+                    <th> الحاله </th>
+                    <td></td>
+                </thead>
+
+                <tbody>
+                    
+                    <% counter = 0 %>
+                    <% @appointments.each do |appointment| %>
+                        <tr class="bg-light">
+                            <td> <b> <%= counter += 1 %> </b> </td>
+                            <td> <b> <%=  appointment.name %> </b> </td>
+                            <td> <b> <%=  appointment.app_time.strftime('%I:%M %p') %> </b> </td>
+                            <td>
+                                <b>
+                                    <% if appointment.description.present? %>
+                                        <%=  appointment.description.truncate(50) %>
+                                    <% else %>
+                                        <span> لا يوجد تفاصيل. </span>
+                                    <% end %>
+                                </b> 
+                            </td>
+                            <td>
+                                <Status :id=<%= appointment.id %> :status=<%= appointment.status %>></Status>
+
+                                <!--
+                                <%# if appointment.status == 1 %>
+                                    <span class="badge bg-info"> لم يدخل بعد </span>
+                                <%# end %>
+
+                                <%# if appointment.status == 2 %>
+                                    <span class="badge bg-primary"> تم الموافقه </span>
+                                <%# end %>
+
+                                <%# if appointment.status == 3 and appointment.delay_date != Date.today %>
+                                    <span class="badge bg-warning"> تم التاجيل </span>
+                                <%# end %>
+
+                                <%# if appointment.status == 3 and appointment.delay_date == Date.today %>
+                                    <span class="badge bg-info"> لم يدخل بعد (مؤجل) </span>
+                                <%# end %>
+
+                                <%# if appointment.status == 4 %>
+                                    <span class="badge bg-danger"> تم الرفض </span>
+                                <%# end %>
+
+                                <%# if appointment.status == 5 %>
+                                    <span class="badge bg-success"> تم الدخول </span>
+                                <%# end %>
+                                -->
+                            </td>
+
+                            <td> 
+                                <Approve :id=<%= appointment.id %> :status=<%= appointment.status %>></Approve>
+                            </td>
+                        </tr>
+                    <% end %>
+                    
+                </tbody>
+
+                <tfoot>
+                   <tr class="bg-prime-var2 text-white fw-bold"> 
+                        <td colspan=6>
+                            عدد المواعيد اليوم 
+                            <%= @appointments.count %>
+                            موعد 
+                        </td>
+                   </tr>
+                </tfoot>
+            </table>
+
+            <Created></Created>
+
+
+        <% else %>
+
+            <p class="fw-bold text-muted"> لا يوجد مواعيد لليوم بعد ... </p>
+
+        <% end %>
+    </div>
+
+    <div class="col">
+        <Manager></Manager>
+    </div>
+</div>

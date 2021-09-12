@@ -1,1 +1,61 @@
 @import '~bootstrap/scss/bootstrap.scss';
+@import "./vars.scss";
+
+@font-face {
+    font-family: 'Dubai';
+    src: url('../fonts/Dubai-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    src: url('../fonts/Helvetica.ttf');
+}
+
+/* ALL */
+
+.html, body {
+    font-family: 'Dubai', sans-serif;
+}
+
+/* COMMON CLASSES */
+
+.bg-prime {
+    background-color: $prime;
+}
+
+.bg-prime-var2 {
+    background-color: $prime_var2;
+}
+
+.bg-prime-var3 {
+    background-color: $prime_var3;
+}
+
+.btn-prime,
+.btn-prime:link {
+    background-color: $prime;
+    outline-color: $prime;
+    color: #ffffff;
+}
+
+.btn-prime:hover,
+.btn-prime:focus {
+    background-color: $prime_var1;
+    color: #ffffff;
+}
+
+.br-10 {
+    border-radius: 10px;
+}
+
+.br-rem {
+    border-radius: 0.25rem;
+}
+
+.point:hover {
+    background-color: rgb(168, 168, 168);
+}
+
+.cool {
+    background-color: hotpink;
+}
