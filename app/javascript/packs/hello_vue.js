@@ -5,6 +5,7 @@
 // like app/views/layouts/application.html.erb.
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
+/*
 import Vue from 'vue'
 import App from '../app.vue'
 
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   console.log(app)
 })
-
+*/
 
 // The above code uses Vue without the compiler, which means you cannot
 // use Vue to target elements in your existing html templates. You would
@@ -32,18 +33,41 @@ document.addEventListener('DOMContentLoaded', () => {
 // </div>
 
 
-// import Vue from 'vue/dist/vue.esm'
-// import App from '../app.vue'
-//
-// document.addEventListener('DOMContentLoaded', () => {
-//   const app = new Vue({
-//     el: '#hello',
-//     data: {
-//       message: "Can you say hello?"
-//     },
-//     components: { App }
-//   })
-// })
+import Vue from 'vue/dist/vue.esm'
+import App from '../app.vue'
+import Current from '../current.vue'
+import Approve from '../approve.vue'
+import Created from '../created.vue'
+import Status from '../status.vue'
+import Manager from '../manager.vue'
+
+import ActionCableVue from 'actioncable-vue'
+import vueMoment from 'vue-moment'
+import TurbolinksAdapter from 'vue-turbolinks'
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  let devUrl = 'ws://127.0.0.1:3000/cable';
+  let prodUrl = 'ws://appmanager251.herokuapp.com/cable'
+
+  Vue.use(ActionCableVue, {
+    debug: true,
+    debugLevel: 'error',
+    connectionUrl: devUrl,
+    connectImmediately: true
+  })
+
+  Vue.use(TurbolinksAdapter)
+  
+  Vue.use(vueMoment)
+
+  const app = new Vue({
+    el: '#app',
+    components: { App, Current, Approve, Created, Status, Manager }
+  })
+
+  
+})
 //
 //
 //
