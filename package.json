@@ -22,7 +22,6 @@
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^4.1.0",
-    "sass-loader": "^7.2.0",
     "sass": "^1.22.10"
   }
 }
