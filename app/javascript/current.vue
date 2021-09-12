@@ -77,8 +77,6 @@ export default {
             console.log('from here')
             this.users.splice(0, 0, res['data'])
         })
-        let audio = new Audio(require('./audios/to-the-point.mp3'))
-        audio.play()
       },
       disconnected() {}
     }
