@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
+  get 'appointments/my_appointments', to: 'appointments#appointment', as: 'my_appointments'
   resources :appointments
   get 'welcome/index'
 
   get 'appointments/manager/dashboard', to: 'appointments#manager', as: 'appointment_manager'
+  
   get 'appointments/:id/delay', to: 'appointments#delay', as: 'appointment_delay'
   put 'appointments/:id/delay', to: 'appointments#delay_save', as: 'appointment_delay_save'
+  
   get 'appointments/today_approve/today', to: 'appointments#today_approve'
 
   patch 'appointments/:id/already_in', to: 'appointments#already_in'

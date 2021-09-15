@@ -3,13 +3,13 @@
         <h5 class="fw-bold"> اضافه معاد جديد. </h5>
         <div class="bg-light p-3 br-10">
             <%= form_with model: @appointment, local: true do |f| %>
-                <div class="form-group">
-                    <%= f.label :name, 'الاسم', class: 'fw-bold mb-1' %> <span class="text-danger">*</span>
-                    <%= f.text_field :name, class: "form-control mb-2 #{ 'is-invalid' if @appointment.errors[:name].any? }", placeholder: 'اسم صاحب المعاد...' %>
-                    <% @appointment.errors[:name].each do |error| %>
-                        <Strong class="text-danger"> <%= error %> </Strong>
-                    <% end %>
-                </div>
+                <!-- <div class="form-group">
+                    <%# f.label :name, 'الاسم', class: 'fw-bold mb-1' %> <span class="text-danger">*</span>
+                    <%# f.text_field :name, class: "form-control mb-2 #{ 'is-invalid' if @appointment.errors[:name].any? }", placeholder: 'اسم صاحب المعاد...' %>
+                    <%# @appointment.errors[:name].each do |error| %>
+                        <Strong class="text-danger"> <%# error %> </Strong>
+                    <%# end %>
+                </div> -->
 
                 <div class="form-group">
                     <%= f.label :from, 'الجهه', class: 'fw-bold mb-1' %> <span class="text-danger">*</span>

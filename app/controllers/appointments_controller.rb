@@ -22,6 +22,11 @@ class AppointmentsController < ApplicationController
         @appointments = Appointment.for_today
     end
 
+    def appointments
+        @appointments = current_user.appointments.latest
+        @today = current_user.appointments.for_today
+    end
+
     def new
         @from_list = [['داخل الاداره', 1], ['خارج الاداره', 2]]
         @appointment = Appointment.new
@@ -30,6 +35,8 @@ class AppointmentsController < ApplicationController
     def create
         @from_list = [['داخل الاداره', 1], ['خارج الاداره', 2]]
         @appointment = Appointment.new(appointment_params)
+        @appointment.name = current_user.name
+        @appointment.user = current_user
         if @appointment.save
             flash[:success] = 'تم انشاء المعاد بنجاح  🥳 '
             redirect_to appointments_path
@@ -62,7 +69,7 @@ class AppointmentsController < ApplicationController
 
     private
     def appointment_params
-        params.require(:appointment).permit(:name, :from, :department, :app_date, :app_time, :description)
+        params.require(:appointment).permit(:from, :department, :app_date, :app_time, :description)
     end
 
     def appointment_delay_params
