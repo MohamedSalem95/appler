@@ -19,6 +19,7 @@
                     <th> الاسم </th>
                     <th> الوقت </th>
                     <th> سبب المقابله </th>
+                    <th> ملحق </th>
                     <th> الحاله </th>
                     <td></td>
                 </thead>
@@ -38,6 +39,14 @@
                                         <span> لا يوجد تفاصيل. </span>
                                     <% end %>
                                 </b> 
+                            </td>
+                            <td>
+                                <% if appointment.file.present? %>
+                                    <%= link_to appointment.file.filename.to_s, appointment.file, target: :blank, class: 'fw-bold' %>
+                                <% else %>
+
+                                    <b> لا يوجد </b>
+                                <% end %>
                             </td>
                             <td>
                             <Status :id=<%= appointment.id %> :status=<%= appointment.status %>></Status>

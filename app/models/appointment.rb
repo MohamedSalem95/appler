@@ -1,6 +1,7 @@
 class Appointment < ApplicationRecord
 
     belongs_to :user
+    has_one_attached :file
 
     # scopes
     scope :for_today, -> { where(app_date: Date.today).or(where(delay_date: Date.today)).order(app_time: :asc) }

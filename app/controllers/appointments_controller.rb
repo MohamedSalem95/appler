@@ -69,7 +69,7 @@ class AppointmentsController < ApplicationController
 
     private
     def appointment_params
-        params.require(:appointment).permit(:from, :department, :app_date, :app_time, :description)
+        params.require(:appointment).permit(:from, :department, :app_date, :app_time, :file, :description)
     end
 
     def appointment_delay_params
