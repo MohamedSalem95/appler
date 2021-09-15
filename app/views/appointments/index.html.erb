@@ -42,7 +42,7 @@
                             </td>
                             <td>
                                 <% if appointment.file.present? %>
-                                    <%= link_to appointment.file.filename.to_s, appointment.file, target: :blank, class: 'fw-bold' %>
+                                    <%= link_to appointment.file.filename.to_s.truncate(50), appointment.file, target: :blank, class: 'fw-bold' %>
                                 <% else %>
 
                                     <b> لا يوجد </b>
