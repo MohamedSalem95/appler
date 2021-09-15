@@ -21,6 +21,31 @@
       </li>
        
       </ul>
+
+      <ul class="navbar-nav me-auto">
+     
+
+       <% if user_signed_in? %>
+          
+           <li class="nav-item">
+            <%= link_to 'تسجيل خروج', destroy_user_session_path, method: :delete, class: 'nav-link fw-bold' %>
+          </li>
+        <% else %>
+
+         <li class="nav-item">
+            <%= link_to 'تسجيل دخول', new_user_session_path, class: 'nav-link fw-bold' %>
+          </li>
+          
+
+          
+          
+           <li class="nav-item">
+              <%= link_to 'انشاء حساب', new_user_registration_path, class: 'nav-link fw-bold' %>
+          </li>
+
+        <% end %>
+       
+      </ul>
     </div>
   </div>
 </nav>
