@@ -1,13 +1,13 @@
 <template>
   <div id="">
-      <button v-if="visible" class="btn btn-outline-success btn-sm fw-bold" @click="approveUser"> دخول </button>
+      <button v-if="visible" class="btn btn-outline-danger btn-sm fw-bold" @click="cancelUser"> الغاء </button>
     
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Approve',
+  name: 'Cancel',
     props: {
       id: Number,
       status: Number
@@ -20,27 +20,26 @@ export default {
   channels: {
     AppointmentChannel: {
       connected() {
-        console.log('connected from Approve')
+        console.log('connected from Cancel')
       },
       received(data) {},
       disconnected() {}
     },
     AppointmentStatusChannel: {
       connected() {
-        console.log('connected from Approve')
+        console.log('connected from Cancel')
       },
       received(data) {
         if(data['status'] == 3 && data['id'] == this.id) this.visible = false
-        if(data['status'] == 4 && data['id'] == this.id) this.visible = false
       },
       disconnected() {}
     }
   },
   methods: {
-      approveUser() {
+      cancelUser() {
           this.$cable.perform({
               channel: 'AppointmentChannel',
-              action: 'approve',
+              action: 'cancel',
               data: {
                   id: this.id
               }

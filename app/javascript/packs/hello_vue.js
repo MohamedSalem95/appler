@@ -40,6 +40,8 @@ import Approve from '../approve.vue'
 import Created from '../created.vue'
 import Status from '../status.vue'
 import Manager from '../manager.vue'
+import Cancel from '../cancel.vue'
+import Ready from '../ready.vue'
 
 import ActionCableVue from 'actioncable-vue'
 import vueMoment from 'vue-moment'
@@ -63,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const app = new Vue({
     el: '#app',
-    components: { App, Current, Approve, Created, Status, Manager }
+    components: { App, Current, Approve, Created, Status, Manager, Cancel, Ready }
   })
 
   

@@ -22,6 +22,8 @@
 
 
     <span v-if="appStatus == 5" class="badge bg-success"> تم الدخول </span>
+
+    <span v-if="appStatus == 6" class="badge bg-orange">  استعد للدخول __برجاء الحضور في مكتب المدير__ </span>
 </div>
 </template>
 

@@ -23,6 +23,7 @@
 
             <td>
                 <Approve v-bind:id="user.id" v-bind:status="user.status"></Approve>
+                <Cancel v-bind:id="user.id" v-bind:status="user.status"></Cancel>
             </td>
 
       </tr>
@@ -37,6 +38,7 @@ import axios from 'axios'
 
 import Approve from './approve.vue'
 import Status from './status.vue'
+import Cancel from './cancel.vue'
 
 let devUrl = 'http://127.0.0.1:3000/appointments/'
 let prodUrl = 'https://appmanager251.herokuapp.com/appointments/'
@@ -44,7 +46,8 @@ let prodUrl = 'https://appmanager251.herokuapp.com/appointments/'
 export default {
   components: {
       Approve,
-      Status
+      Status,
+      Cancel
   },
   data: function () {
     return {

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-9">
     <!--
         <%# link_to new_appointment_path, class: 'btn btn-prime btn-lg' do %>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-plus-fill" viewBox="0 0 16 16">
@@ -19,6 +19,7 @@
                     <th> الاسم </th>
                     <th> الوقت </th>
                     <th> سبب المقابله </th>
+                    <th> ملحق </th>
                     <th> الحاله </th>
                     <td></td>
                 </thead>
@@ -39,6 +40,14 @@
                                         <span> لا يوجد تفاصيل. </span>
                                     <% end %>
                                 </b> 
+                            </td>
+                            <td>
+                                <% if appointment.file.present? %>
+                                    <%= link_to appointment.file.filename.to_s.truncate(50), appointment.file, target: :blank, class: 'fw-bold' %>
+                                <% else %>
+
+                                    <b> لا يوجد </b>
+                                <% end %>
                             </td>
                             <td>
                                 <Status :id=<%= appointment.id %> :status=<%= appointment.status %>></Status>
@@ -69,9 +78,17 @@
                                 <%# end %>
                                 -->
                             </td>
+                            <td> 
+                                <div class="d-inline"> <Approve :id=<%= appointment.id %> :status=<%= appointment.status %>></Approve> </div>
+
+                            </td>
 
                             <td> 
-                                <Approve :id=<%= appointment.id %> :status=<%= appointment.status %>></Approve>
+                            
+                                <div class="d-inline"> <Cancel :id=<%= appointment.id %>  :status=<%= appointment.status %> ></Cancel> </div>
+ </td>
+                            <td> 
+                                <div class="d-inline"> <Ready :id=<%= appointment.id %> :status=<%= appointment.status %>></Ready> </div>
                             </td>
                         </tr>
                     <% end %>

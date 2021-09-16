@@ -11,4 +11,14 @@ class AppointmentChannel < ApplicationCable::Channel
     @appointment = Appointment.find(data['id'])
     @appointment.update!(status: 2, approval_time: Time.now)
   end
+
+  def cancel(data)
+    @appointment = Appointment.find(data['id'])
+    @appointment.update!(status: 4)
+  end
+
+  def ready(data)
+    @appointment = Appointment.find(data['id'])
+    @appointment.update!(status: 6)
+  end
 end
