@@ -49,6 +49,20 @@ class AppointmentsController < ApplicationController
         @appointment = Appointment.find(params[:id])
     end
 
+    def add_note
+        @appointment = Appointment.find(params[:id])
+    end
+
+    def add_note_save
+        @appointment = Appointment.find(params[:id])
+        if @appointment.update(notes_params)
+            flash[:success] = 'تم اضافه الملحوظه بنجاح.'
+            render :add_note
+        else
+            render :add_note
+        end
+    end
+
     def delay_save
         @appointment = Appointment.find(params[:id])
         @appointment.status = 3
@@ -80,4 +94,7 @@ class AppointmentsController < ApplicationController
         params.require(:appointment).permit(:status)
     end
 
+    def notes_params
+        params.require(:appointment).permit(:notes)
+    end
 end

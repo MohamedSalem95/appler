@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contacts
   devise_for :users
   get 'appointments/my_appointments', to: 'appointments#appointment', as: 'my_appointments'
   resources :appointments
@@ -8,6 +9,9 @@ Rails.application.routes.draw do
   
   get 'appointments/:id/delay', to: 'appointments#delay', as: 'appointment_delay'
   put 'appointments/:id/delay', to: 'appointments#delay_save', as: 'appointment_delay_save'
+
+  get 'appointments/:id/add_note', to: 'appointments#add_note', as: 'appointment_add_note'
+  put 'appointments/:id/add_note', to: 'appointments#add_note_save', as: 'appointment_add_note_save'
   
   get 'appointments/today_approve/today', to: 'appointments#today_approve'
 

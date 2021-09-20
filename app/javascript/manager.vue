@@ -57,7 +57,7 @@ export default {
     }
   },
   channels: {
-    AppointmentChannel: {
+    CurrentMeetingChannel: {
       connected() {
         console.log('connected from Manager')
       },
@@ -74,7 +74,7 @@ export default {
   },
   mounted () {
     this.$cable.subscribe({
-      channel: 'AppointmentChannel'
+      channel: 'CurrentMeetingChannel'
     })
   }
 }

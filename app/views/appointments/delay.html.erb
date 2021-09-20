@@ -14,7 +14,14 @@
                 
             </p>
             <div class="bg-white p-3 br-10 mb-2">
-                <p class="fw-bold fs-5 text-muted"> <%= @appointment.description %> </p>
+                 <% if @appointment.description.present? %>
+                    <p class="fw-bold fs-5 text-muted"> <%= @appointment.description %> </p>
+
+                <% else %>
+                    <p>
+                        <b> لا يوجد تفاصيل. </b>
+                    </p>
+                <% end %>
             </div>
 
              <%= form_with model: @appointment, url: appointment_delay_save_path, method: :put, local: true do |f| %>

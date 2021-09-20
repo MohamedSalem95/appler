@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-md-6">
+
+        <h4 class=""> اضافه جه اتصال </h4>
+        <div class="bg-light br-10 p-2">
+
+            <%= form_with model: @contact, local: true do |f| %>
+
+                <div class="form-group">
+                    <%= f.label :name, 'الاسم(اجباري)', class: 'fw-bold mb-1' %>
+                    <%= f.text_field :name, autofocus: true, class: "form-control mb-2 #{ 'is-invalid' if @contact.errors['name'].any? }", placeholder: 'الاسم ..' %>
+                
+                    <% @contact.errors['name'].each do |error| %>
+                        <div> <Strong class="text-danger"> <%= error %> </Strong> </div>
+                    <% end %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.label :email, 'الايميل(اجباري)', class: 'fw-bold mb-1' %>
+                    <%= f.email_field :email, class: "form-control mb-2 #{ 'is-invalid' if @contact.errors['email'].any? }", placeholder: 'الايميل ..' %>
+
+                    <% @contact.errors['email'].each do |error| %>
+                        <div> <Strong class="text-danger"> <%= error %> </Strong> </div>
+                    <% end %>
+                </div>
+
+                <%= f.submit 'حفظ', class: 'btn btn-prime fw-bold' %>
+
+            <% end %>
+
+        </div>
+
+    </div>
+
+    <div class="col">
+        <%= image_pack_tag 'contacts.png', width: 430 %>
+    </div>
+</div>

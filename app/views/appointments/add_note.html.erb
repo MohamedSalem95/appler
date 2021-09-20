@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col">
+        <h5 class="fw-bold">
+             اضافه ملحوظه.
+        </h5>
+
+        <div class="bg-light br-10 p-3">
+            <p class="fw-bold">
+                 اضافه ملحوظه  لمعاد 
+                <u class="text-primary"> <%= @appointment.name %> </u>
+                بتاريخ
+                <%= @appointment.app_date.strftime('%d/%m/%Y') %>
+                بخصوص
+                
+            </p>
+            <div class="bg-white p-3 br-10 mb-2">
+                <% if @appointment.description.present? %>
+                    <p class="fw-bold fs-5 text-muted"> <%= @appointment.description %> </p>
+
+                <% else %>
+                    <p>
+                        <b> لا يوجد تفاصيل. </b>
+                    </p>
+                <% end %>
+            </div>
+
+             <%= form_with model: @appointment, url: appointment_add_note_save_path, method: :put, local: true do |f| %>
+
+               
+                <div class="form-group mb-1">
+                    <%= f.text_area :notes, class: 'form-control', rows: 5, autofocus: true, placeholder: 'اضافه ملحوظه ...' %>
+                </div>
+        
+
+                <%= button_tag class: 'btn btn-prime' do %>
+                    حفظ
+                <% end %>
+
+
+            <% end %>
+        </div>
+
+       
+    </div>
+</div>

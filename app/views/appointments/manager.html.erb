@@ -20,6 +20,7 @@
                     <th> الوقت </th>
                     <th> سبب المقابله </th>
                     <th> ملحق </th>
+                    <th> ملحوظات </th>
                     <th> الحاله </th>
                     <td></td>
                 </thead>
@@ -44,6 +45,16 @@
                             <td>
                                 <% if appointment.file.present? %>
                                     <%= link_to appointment.file.filename.to_s.truncate(50), appointment.file, target: :blank, class: 'fw-bold' %>
+                                <% else %>
+
+                                    <b> لا يوجد </b>
+                                <% end %>
+                            </td>
+                            <td>
+                                <% if appointment.notes.present? %>
+                                    <p class="fw-bold">
+                                        <%= appointment.notes.truncate(100) %>
+                                    </p>
                                 <% else %>
 
                                     <b> لا يوجد </b>
@@ -86,10 +97,15 @@
                             <td> 
                             
                                 <div class="d-inline"> <Cancel :id=<%= appointment.id %>  :status=<%= appointment.status %> ></Cancel> </div>
- </td>
+                            </td>
                             <td> 
                                 <div class="d-inline"> <Ready :id=<%= appointment.id %> :status=<%= appointment.status %>></Ready> </div>
                             </td>
+                            
+                            <td>
+                                <%= link_to 'ملحوظه', appointment_add_note_path(appointment), target: 'blank' %>
+                            </td>
+
                         </tr>
                     <% end %>
                     

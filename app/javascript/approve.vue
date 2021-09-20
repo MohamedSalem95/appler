@@ -46,6 +46,13 @@ export default {
               }
           })
           this.visible = false
+          this.$cable.perform({
+            channel: 'CurrentMeetingChannel',
+            action: 'current',
+            data: {
+              id: this.id
+            }
+          })
       }
   },
   mounted () {
@@ -57,6 +64,9 @@ export default {
     })
     this.$cable.subscribe({
       channel: 'AppointmentStatusChannel'
+    })
+    this.$cable.subscribe({
+      channel: 'CurrentMeetingChannel'
     })
   }
 }
