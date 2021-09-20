@@ -18,10 +18,22 @@ class ContactsController < ApplicationController
         end
     end
 
+    def mail
+        @contacts = Contact.all.map { |contact| [contact.name, contact.email] }
+    end
+
+    def mail_send
+        puts mail_params
+    end
+
 
     private
     def contact_params
         params.require(:contact).permit(:name, :email)
+    end
+
+    def mail_params
+        params.require(:mail).permit(:contact, :subject, :message)
     end
 
 end

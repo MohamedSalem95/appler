@@ -18,6 +18,17 @@
                         </tr>
                     <% end %>
                 </tbody>
+
+                <tfoot>
+                   <tr class="bg-prime-var2 text-white fw-bold"> 
+                        <td colspan=6>
+                            عدد جهات الاتصال 
+                            <%= @contacts.count %>
+                            جهه
+                             
+                        </td>
+                   </tr>
+                </tfoot>
             </table>
 
         <% else %>
@@ -33,7 +44,7 @@
     <div class="col">
         <div class="d-grid gap-2">
             <%= link_to 'انشاء جهه اتصال', new_contact_path, class: 'btn btn-outline-primary fw-bold' %>
-            <button class="btn btn-outline-primary fw-bold" type="button"> ارسال ايميل </button>
+            <%= link_to 'ارسال ايميل', mail_path, class: 'btn btn-outline-primary fw-bold'%>
         </div>
     </div>
 </div>

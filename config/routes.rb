@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'contacts/send_mail', to: 'contacts#mail', as: 'mail'
+  post 'contacts/send_mail', to: 'contacts#mail_send', as: 'mail_send'
   resources :contacts
   devise_for :users
   get 'appointments/my_appointments', to: 'appointments#appointment', as: 'my_appointments'

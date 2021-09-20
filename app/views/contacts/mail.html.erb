@@ -1,0 +1,38 @@
+<div class="row">
+
+    <div class="col-md-6">
+        <h4 class="fw-bold">
+            انشاء ايميل.
+        </h4>
+
+        <div class="bg-light br-10 p-2">
+            <%= form_for :mail, url: mail_send_path, local: true do |f| %>
+
+                <div class="form-group">
+                    <%= f.label :contact, 'اختر الجهه', class: 'fw-bold mb-1' %>
+                    <%= f.select :contact, @contacts ,{  }, { class: 'form-select fw-bold mb-2' } %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.label :subject, 'الموضوع', class: 'fw-bold mb-1' %>
+                    <%= f.text_field :subject, class: 'form-control mb-2', placeholder: 'الموضوع ...' %>
+                </div>
+
+
+                <div class="form-group">
+                    <%= f.label :message, 'الرساله', class: 'fw-bold mb-1' %>
+                    <%= f.text_area :message, class: 'form-control mb-2', placeholder: 'الرساله ...', rows: 6 %>
+                </div>
+
+                <%= f.submit 'ارسال', class: 'btn btn-prime fw-bold' %>
+
+            <% end %>
+        </div>
+
+    </div>
+
+    <div class="col">
+        <%= image_pack_tag 'write_mail.png', width: 430 %>
+    </div>
+
+</div>
