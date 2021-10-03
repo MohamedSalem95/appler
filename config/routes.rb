@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'users/dashboard', as: 'dashboard'
+  get 'users/index'
+
+  get 'users/managers', as: 'managers'
+  get 'users/sec', as: 'sec'
+  get 'users/admin', as: 'admin'
+  get 'users/normal', as: 'normal'
+
   get 'contacts/send_mail', to: 'contacts#mail', as: 'mail'
   post 'contacts/send_mail', to: 'contacts#mail_send', as: 'mail_send'
   resources :contacts

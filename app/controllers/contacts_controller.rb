@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
     def create
         @contact = Contact.new(contact_params)
         if @contact.save
-            flash[:success] = 'تم انشاء جهع الاتصال بنجاح.'
+            flash[:success] = 'تم انشاء جهة الاتصال بنجاح.'
             redirect_to contacts_path
         else
             render :new
@@ -23,10 +23,11 @@ class ContactsController < ApplicationController
     end
 
     def mail_send
-        puts mail_params
+        AppointmentMailer.with(mail_params).send_mail.deliver_later
+        flash[:success] = 'تم ارسال الايميل بنجاح.'
+        redirect_to contacts_path
     end
-
-
+    
     private
     def contact_params
         params.require(:contact).permit(:name, :email)

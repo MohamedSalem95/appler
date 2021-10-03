@@ -1,0 +1,67 @@
+<div class="row">
+
+    <div class="col-md-2"> 
+    
+        <div class="d-grid gap-2">
+            <%= link_to 'المستخدمين', dashboard_path, class: 'btn btn-primary fw-bold' %>
+            <%= link_to 'الادوار', mail_path, class: 'btn btn-outline-primary'%>
+        </div>
+
+    </div>
+
+    <div class="col">
+        <%= link_to 'جميع المستخدمين', dashboard_path, class: 'btn btn-primary fw-bold' %>
+        <%= link_to 'المديرين', managers_path, class: 'btn btn-outline-primary' %>
+        <%= link_to 'السكرتاريه', sec_path, class: 'btn btn-outline-primary' %>
+        <%= link_to 'مستخدم', normal_path, class: 'btn btn-outline-primary' %>
+        <%= link_to 'الادمن', admin_path, class: 'btn btn-outline-primary' %>
+
+        <hr>
+
+        <% if @users.any? %>
+             <table class="table table-borderless table-bordered table-hover table-sm">
+                <thead class="bg-prime text-white">
+                    
+                    <th> الاسم </th>
+                    <th> الدور </th>
+                    
+                    <th>  </th>
+                </thead>
+
+                <tbody>
+                    <% @users.each do |user| %>
+                        <tr>
+                            <td class="fw-bold"> <%= user.name %> </td>
+                            <td>
+                                <% if user.roles.first.code == 0 %>
+                                    <span class="badge bg-success fw-bold"> ادمن </span>
+                                <% end %>
+
+                                <% if user.roles.first.code == 2 %>
+                                    <span class="badge bg-primary fw-bold"> مدير </span>
+                                <% end %>
+
+                                <% if user.roles.first.code == 1 %>
+                                    <span class="badge bg-info fw-bold"> سكرتاريه </span>
+                                <% end %>
+
+                                <% if user.roles.first.code == 3 %>
+                                    <span class="badge bg-light fw-bold"> مستخدم </span>
+                                <% end %>
+                            
+                            </td>
+
+                            <td>
+                                <%= link_to 'تعديل الدور', '#' %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        <% else %>
+
+            <p class="fw-bold"> لا يوجد. </p>
+        <% end %>
+    </div>
+
+</div>

@@ -55,6 +55,12 @@
             </a>
 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <% if current_user.has_role? 0 %>
+                <li>
+                  <%= link_to 'الادمن', dashboard_path, class: 'dropdown-item fw-bold text-success' %>
+                </li>      
+              <% end %>
+             
               <li>
                   <%= link_to 'تسجيل خروج', destroy_user_session_path, method: :delete, class: 'dropdown-item fw-bold' %>
                 

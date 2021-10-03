@@ -7,6 +7,8 @@ class User < ApplicationRecord
   
   validates_presence_of :name, message: 'يجب ادخال الاسم.'
 
+  scope :latest, -> { order(created_at: :desc) }
+
   has_many :appointments
   has_and_belongs_to_many :roles
 
