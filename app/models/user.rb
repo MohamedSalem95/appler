@@ -12,6 +12,9 @@ class User < ApplicationRecord
   has_many :appointments
   has_and_belongs_to_many :roles
 
+  # callbacks
+  after_create :set_normal_user
+
   def add_role(code)
     role = Role.find_by_code(code)
     self.roles.clear
@@ -24,4 +27,10 @@ class User < ApplicationRecord
     return true if self.roles.include? role 
     false
   end
+
+  def set_normal_user
+    role = Role.find_by_code(3)
+    self.roles << role
+  end
+
 end

@@ -3,25 +3,34 @@
  🦄 
 </h5>
 
-<%= link_to my_appointments_path do %>
-  <div class="bg-light br-10 p-1 d-inline-block point">
-    <%= image_pack_tag 'appointment.png', width: 200 %>
-    <p class="text-center fw-bold"> مواعيدي </p>
-  </div>
+<% if policy(:appointment).appointment? %>
+  <%= link_to my_appointments_path do %>
+    <div class="bg-light br-10 p-1 d-inline-block point">
+      <%= image_pack_tag 'appointment.png', width: 200 %>
+      <p class="text-center fw-bold"> مواعيدي </p>
+    </div>
+  <% end %>
+
 <% end %>
 
-<%= link_to appointment_manager_path do %>
-  <div class="bg-light br-10 p-1 d-inline-block point">
-    <%= image_pack_tag 'manager.png', width: 200 %>
-    <p class="text-center fw-bold"> المدير </p>
-  </div>
+<% if policy(:appointment).manager? %>
+  <%= link_to appointment_manager_path do %>
+    <div class="bg-light br-10 p-1 d-inline-block point">
+      <%= image_pack_tag 'manager.png', width: 200 %>
+      <p class="text-center fw-bold"> المدير </p>
+    </div>
+  <% end %>
 <% end %>
 
   &nbsp;
 
-<%= link_to appointments_path do %>
-  <div class="bg-light br-10 p-1 d-inline-block point">
-    <%= image_pack_tag 'sec.png', width: 200 %>
-    <p class="text-center fw-bold"> السكرتاريه </p>
-  </div>
+<% if policy(:appointment).index? %>
+
+  <%= link_to appointments_path do %>
+    <div class="bg-light br-10 p-1 d-inline-block point">
+      <%= image_pack_tag 'sec.png', width: 200 %>
+      <p class="text-center fw-bold"> السكرتاريه </p>
+    </div>
+  <% end %>
+
 <% end %>

@@ -46,13 +46,13 @@
                                 <% end %>
 
                                 <% if user.roles.first.code == 3 %>
-                                    <span class="badge bg-light fw-bold"> مستخدم </span>
+                                    <span class="badge bg-prime text-white fw-bold"> مستخدم </span>
                                 <% end %>
                             
                             </td>
 
                             <td>
-                                <%= link_to 'تعديل الدور', '#' %>
+                                <%= link_to 'تعديل الدور', user_change_role_path(user) %>
                             </td>
                         </tr>
                     <% end %>
